@@ -12,6 +12,7 @@ const OneClass = () => {
     const response = await axios.get(`${BASE_URL}/class/${id}`)
     setAClass(response.data)
     setStudents(response.data.students)
+    console.log(response.data.students)
   }
 
   useEffect(() => {
@@ -25,8 +26,8 @@ const OneClass = () => {
         <>
           <div>Name: {student.name}</div>
           <div>Email: {student.email}</div>
-          <div>Letter Grade: {student.Grades.letter}</div>
-          <div>Score Grade: {student.Grades.score}</div>
+          <div>Letter Grade: {student.Grades[0].letter}</div>
+          <div>Score Grade: {student.Grades[0].score}</div>
         </>
       ))}
     </>
