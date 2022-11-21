@@ -3,8 +3,9 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { useState, useEffect } from 'react'
 
-const ClassList = () => {
+const ClassList = ({ getOneClass }) => {
   const [classes, setClasses] = useState([])
+
   const getAllClasses = async () => {
     const res = await axios.get(`${BASE_URL}/class/all`)
     setClasses(res.data)
@@ -15,8 +16,12 @@ const ClassList = () => {
 
   return (
     <div>
-      {classes.map((element) => (
-        <ClassCard key={element.id} name={element.name} />
+      {classes.map((aClass) => (
+        <ClassCard
+          key={aClass.id}
+          name={aClass.name}
+          onClick={() => getOneClass(aClass.id)}
+        />
       ))}
     </div>
   )
