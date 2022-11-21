@@ -1,12 +1,16 @@
 import ClassList from '../components/ClassList'
 import Nav from '../components/Nav'
 import StudentList from '../components/StudentList'
-import { useState } from 'react'
+// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Home = () => {
-  const [viewStudents, setViewStudents] = useState(false)
-  const [viewClasses, setViewClasses] = useState(false)
+const Home = ({
+  setViewClasses,
+  setViewStudents,
+  viewStudents,
+  getAllStudents,
+  students
+}) => {
   let navigate = useNavigate()
 
   const getOneStudent = (id) => {
@@ -22,7 +26,11 @@ const Home = () => {
       <Nav setViewClasses={setViewClasses} setViewStudents={setViewStudents} />
 
       {viewStudents ? (
-        <StudentList getOneStudent={getOneStudent} />
+        <StudentList
+          getOneStudent={getOneStudent}
+          getAllStudents={getAllStudents}
+          students={students}
+        />
       ) : (
         <ClassList getOneClass={getOneClass} />
       )}

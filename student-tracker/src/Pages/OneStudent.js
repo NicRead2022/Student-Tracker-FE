@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-const OneStudent = () => {
+const OneStudent = ({ setViewStudents }) => {
   let { id } = useParams()
+  let navigate = useNavigate()
   const [studentInfo, setStudentInfo] = useState({})
   const [studentClasses, setStudentClasses] = useState([])
 
@@ -12,6 +13,12 @@ const OneStudent = () => {
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     setStudentInfo(res.data)
     setStudentClasses(res.data.classes)
+  }
+
+  const deleteStudent = async () => {
+    await axios.delete(`${BASE_URL}/student/${id}`)
+    setViewStudents(true)
+    navigate('/')
   }
 
   useEffect(() => {
@@ -31,6 +38,7 @@ const OneStudent = () => {
           </div>
         ))}
       </div>
+      <button onClick={deleteStudent}>delete student</button>
     </div>
   )
 }
