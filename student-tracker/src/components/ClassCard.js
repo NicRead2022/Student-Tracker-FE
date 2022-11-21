@@ -2,7 +2,7 @@ import '../CSS/Home.css'
 
 const ClassCard = (props) => {
   return (
-    <div>
+    <div onClick={props.onClick}>
       <img
         className="course-img"
         src="https://static.vecteezy.com/system/resources/previews/003/303/818/original/empty-classroom-scene-with-interior-decoration-and-objects-free-vector.jpg"

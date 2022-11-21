@@ -13,6 +13,10 @@ const Home = () => {
     navigate(`/student/${id}`)
   }
 
+  const getOneClass = (id) => {
+    navigate(`/class/${id}`)
+  }
+
   return (
     <div>
       <Nav setViewClasses={setViewClasses} setViewStudents={setViewStudents} />
@@ -20,7 +24,7 @@ const Home = () => {
       {viewStudents ? (
         <StudentList getOneStudent={getOneStudent} />
       ) : (
-        <ClassList />
+        <ClassList getOneClass={getOneClass} />
       )}
     </div>
   )
