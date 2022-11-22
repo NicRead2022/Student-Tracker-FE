@@ -33,9 +33,9 @@ const StudentList = ({ getOneStudent, getAllStudents, students }) => {
     getAllStudents()
   }
 
-  // useEffect(() => {
-  //   getAllStudents()
-  // }, [])
+  useEffect(() => {
+    getAllStudents()
+  }, [])
 
   return (
     <div>

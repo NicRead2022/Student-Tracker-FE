@@ -2,7 +2,7 @@ import './CSS/App.css'
 import Home from './Pages/Home'
 import OneClass from './Pages/OneClass'
 import OneStudent from './Pages/OneStudent'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { BASE_URL } from './globals'
 import axios from 'axios'
@@ -17,9 +17,9 @@ function App() {
     setStudents(res.data)
   }
 
-  useEffect(() => {
-    getAllStudents()
-  }, [students])
+  // useEffect(() => {
+  //   getAllStudents()
+  // }, [students])
 
   return (
     <div className="App">

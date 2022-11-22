@@ -6,10 +6,13 @@ import { useEffect, useState } from 'react'
 const OneStudent = ({ setViewStudents }) => {
   let { id } = useParams()
   let navigate = useNavigate()
+
   const [studentInfo, setStudentInfo] = useState({})
   const [studentClasses, setStudentClasses] = useState([])
+  const [gpa, setGpa] = useState(null)
 
   const getStudentInfo = async () => {
+    // updateGpa()
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     setStudentInfo(res.data)
     setStudentClasses(res.data.classes)
@@ -21,14 +24,33 @@ const OneStudent = ({ setViewStudents }) => {
     navigate('/')
   }
 
+  const calculateGpa = async () => {}
+
+  const updateGpa = async () => {
+    // await calculateGpa()
+    let res = await axios.get(`${BASE_URL}/student/${id}`)
+    let allgrades = 0
+    for (let i = 0; i < res.data.classes.length; i++) {
+      allgrades += res.data.classes[i].Grades[0].score
+    }
+    let GPA = allgrades / res.data.classes.length
+    let roundedGPA = GPA.toFixed(2)
+    setGpa(roundedGPA)
+    await axios.put(`${BASE_URL}/student/${id}`, { gpa: gpa })
+    await getStudentInfo()
+  }
+
   useEffect(() => {
-    getStudentInfo()
+    updateGpa()
+    // getStudentInfo()
+    // calculateGpa()
   }, [])
 
   return (
     <div>
       <h1>{studentInfo.name}</h1>
       <h3>{studentInfo.email}</h3>
+      <h3>{studentInfo.gpa}</h3>
       <div>
         {studentClasses.map((element) => (
           <div>
