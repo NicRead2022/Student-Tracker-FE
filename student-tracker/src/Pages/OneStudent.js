@@ -42,7 +42,7 @@ const OneStudent = ({ setViewStudents }) => {
       <div className="student-info">
         <div>{studentInfo.name}</div>
         <div>{studentInfo.email}</div>
-        <div>{studentInfo.gpa}</div>
+        <div>GPA: {studentInfo.gpa}</div>
       </div>
       <div>
         <div className="grades">

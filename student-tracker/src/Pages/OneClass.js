@@ -57,7 +57,7 @@ const OneClass = () => {
   }
 
   const handleEnrollChange = (event) => {
-    console.log(event)
+    console.log(event.target.value)
     setNewId({ ...newId, [event.target.id]: event.target.value })
   }
 
@@ -65,22 +65,25 @@ const OneClass = () => {
     await axios.put(`${BASE_URL}/grade/enroll/${id}`, newId)
   }
 
+  const viewStudent = (studentId) => {
+    navigate(`/student/${studentId}`)
+  }
+
   useEffect(() => {
     getOneClass()
   }, [])
 
   return (
-<<<<<<< HEAD
-    <>
-      <div>{aClass.name}</div>
+    <div className="bigdiv">
+      <div className="class-name">{aClass.name}</div>
       <button onClick={() => returnToAllClasses()}>Back</button>
       <button onClick={() => startEnroll()}>Enroll New Students</button>
       {enroll ? (
-        <form onSubmit={(e) => handleEnrollSubmit(e)}>
+        <form onSubmit={() => handleEnrollSubmit()}>
           <select
             name="studentId"
             id="studentId"
-            onChange={() => handleEnrollChange()}
+            onChange={(e) => handleEnrollChange(e)}
           >
             {allStudents.map((newStudent) =>
               dontShowStudentTwice(newStudent) ? null : (
@@ -91,28 +94,33 @@ const OneClass = () => {
           <button>Enroll Student</button>
         </form>
       ) : (
-        <div>
+        <div className="students">
           {students.map((student) => (
-            <>
-              <hr></hr>
-              <div>Name: {student.name}</div>
-              <div>Email: {student.email}</div>
-              <div>Letter Grade: {student.Grades[0].letter}</div>
-              <form onSubmit={(e) => handleSubmit(e, student.id)}>
-                <select name="letter" id="letter" onChange={handleChange}>
-                  <option value={student.Grades[0].letter}>
-                    {student.Grades[0].letter}
-                  </option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-                  <option value="F">F</option>
-                </select>
-                <button>Update Grade</button>
-              </form>
-              <div>Score Grade: {student.Grades[0].score}</div>
-            </>
+            <div className="one-student">
+              <div>
+                <div onClick={() => viewStudent(student.id)}>
+                  Name: {student.name}
+                </div>
+                <div>Email: {student.email}</div>
+              </div>
+              <div className="grades">
+                <div>Letter Grade: {student.Grades[0].letter}</div>
+                <form onSubmit={(e) => handleSubmit(e, student.id)}>
+                  <select name="letter" id="letter" onChange={handleChange}>
+                    <option value={student.Grades[0].letter}>
+                      {student.Grades[0].letter}
+                    </option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                  </select>
+                  <button>Update Grade</button>
+                </form>
+                <div>Score Grade: {student.Grades[0].score}</div>
+              </div>
+            </div>
           ))}
         </div>
       )}
@@ -120,29 +128,7 @@ const OneClass = () => {
       <button onClick={() => deleteClass()} className="delete-class-btn">
         Delete Class
       </button>
-    </>
-=======
-    <div className="bigdiv">
-      <div className="class-name">{aClass.name}</div>
-      <div className="students">
-        {students.map((student) => (
-          <div className="one-student">
-            <div>
-              <div>Name: {student.name}</div>
-              <div>Email: {student.email}</div>
-            </div>
-            <div className="grades">
-              <div>Letter Grade: {student.Grades[0].letter}</div>
-              <div>Score Grade: {student.Grades[0].score}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <button onClick={() => deleteClass()} className="delete-class-btn">
-        Delete Class
-      </button>
     </div>
->>>>>>> 63a4e467ea1f27a45b3307cfcea2947e08dc1808
   )
 }
 
