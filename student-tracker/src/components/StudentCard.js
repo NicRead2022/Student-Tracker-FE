@@ -1,8 +1,8 @@
 const StudentCard = (props) => {
   return (
-    <div onClick={props.onClick}>
+    <div className="student-div" onClick={props.onClick}>
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThl_Nkif3vx_D_HsfSylvWnYcWZHyuOTkEig&usqp=CAU"
+        src="https://ucarecdn.com/5edb4cdd-4212-4b87-9a57-d2d402401782/imagesremovebgpreview.png"
         alt=""
       ></img>
       <p>{props.name}</p>

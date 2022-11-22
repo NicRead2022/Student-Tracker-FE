@@ -3,6 +3,8 @@ import Nav from '../components/Nav'
 import StudentList from '../components/StudentList'
 // import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../CSS/Home.css'
+import '../CSS/App.css'
 
 const Home = ({
   setViewClasses,
@@ -24,16 +26,17 @@ const Home = ({
   return (
     <div>
       <Nav setViewClasses={setViewClasses} setViewStudents={setViewStudents} />
-
-      {viewStudents ? (
-        <StudentList
-          getOneStudent={getOneStudent}
-          getAllStudents={getAllStudents}
-          students={students}
-        />
-      ) : (
-        <ClassList getOneClass={getOneClass} />
-      )}
+      <div className="classes-students">
+        {viewStudents ? (
+          <StudentList
+            getOneStudent={getOneStudent}
+            getAllStudents={getAllStudents}
+            students={students}
+          />
+        ) : (
+          <ClassList getOneClass={getOneClass} />
+        )}
+      </div>
     </div>
   )
 }

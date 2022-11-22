@@ -10,9 +10,10 @@ const OneStudent = ({ setViewStudents }) => {
   const [studentInfo, setStudentInfo] = useState({})
   const [studentClasses, setStudentClasses] = useState([])
   const [gpa, setGpa] = useState(null)
+  const [toggleGpa, setToggleGpa] = useState(false)
 
   const getStudentInfo = async () => {
-    // updateGpa()
+    await updateGpa()
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     setStudentInfo(res.data)
     setStudentClasses(res.data.classes)
@@ -24,10 +25,7 @@ const OneStudent = ({ setViewStudents }) => {
     navigate('/')
   }
 
-  const calculateGpa = async () => {}
-
-  const updateGpa = async () => {
-    // await calculateGpa()
+  const calculateGpa = async () => {
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     let allgrades = 0
     for (let i = 0; i < res.data.classes.length; i++) {
@@ -36,31 +34,54 @@ const OneStudent = ({ setViewStudents }) => {
     let GPA = allgrades / res.data.classes.length
     let roundedGPA = GPA.toFixed(2)
     setGpa(roundedGPA)
+  }
+
+  const updateGpa = async () => {
+    await calculateGpa()
+    // let res = await axios.get(`${BASE_URL}/student/${id}`)
+    // let allgrades = 0
+    // for (let i = 0; i < res.data.classes.length; i++) {
+    //   allgrades += res.data.classes[i].Grades[0].score
+    // }
+    // let GPA = allgrades / res.data.classes.length
+    // let roundedGPA = GPA.toFixed(2)
+    // setGpa(roundedGPA)
     await axios.put(`${BASE_URL}/student/${id}`, { gpa: gpa })
-    await getStudentInfo()
+    setToggleGpa(true)
   }
 
   useEffect(() => {
-    updateGpa()
-    // getStudentInfo()
+    // updateGpa()
+
+    getStudentInfo()
+
     // calculateGpa()
   }, [])
 
   return (
-    <div>
-      <h1>{studentInfo.name}</h1>
-      <h3>{studentInfo.email}</h3>
-      <h3>{studentInfo.gpa}</h3>
+    <div className="bigdiv">
+      <div className="student-info">
+        <div>{studentInfo.name}</div>
+        <div>{studentInfo.email}</div>
+        <div>{studentInfo.gpa}</div>
+      </div>
       <div>
+        <div className="grades">
+          <div>class name</div>
+          <div>letter</div>
+          <div>Score</div>
+        </div>
         {studentClasses.map((element) => (
-          <div>
+          <div className="grades">
             <h4>{element.name}</h4>
             <h4>{element.Grades[0].letter}</h4>
             <h4>{element.Grades[0].score}</h4>
           </div>
         ))}
       </div>
-      <button onClick={deleteStudent}>delete student</button>
+      <button className="delete-student" onClick={deleteStudent}>
+        delete student
+      </button>
     </div>
   )
 }

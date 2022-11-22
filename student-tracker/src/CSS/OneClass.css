@@ -1,0 +1,47 @@
+.delete-class-btn {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 18px;
+  height: 35px;
+  width: 125px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid white;
+  border-radius: 25px;
+  margin-right: 8px;
+}
+
+.class-name {
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.students {
+  display: grid;
+  grid-template-columns: .5fr ;
+  justify-content: center;
+  column-gap: 0px;
+  margin-bottom: 20px;
+  }
+
+.one-student {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(222, 225, 167);
+  border-radius: 25px;
+height: 60px;
+color: black;
+}
+
+.grades {
+  margin-left: 60px;
+}
+
+.bigdiv {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+}
