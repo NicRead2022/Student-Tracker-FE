@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 
 const OneClass = () => {
+  let navigate = useNavigate()
   let { id } = useParams()
   const [aClass, setAClass] = useState([])
   const [students, setStudents] = useState([])
@@ -13,6 +14,11 @@ const OneClass = () => {
     setAClass(response.data)
     setStudents(response.data.students)
     console.log(response.data.students)
+  }
+  const deleteClass = async () => {
+    await axios.delete(`${BASE_URL}/class/${id}`)
+    // setAClass(null)
+    navigate(-1)
   }
 
   useEffect(() => {
@@ -30,6 +36,7 @@ const OneClass = () => {
           <div>Score Grade: {student.Grades[0].score}</div>
         </>
       ))}
+    <button onClick={() => deleteClass()} className='delete-class-btn'>Delete Class</button>
     </>
   )
 }
