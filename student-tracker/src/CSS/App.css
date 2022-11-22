@@ -1,4 +1,17 @@
 .App {
   text-align: center;
+  background-image: url('https://media.istockphoto.com/vectors/sheet-of-school-ring-binder-paper-vector-id1320563034?b=1&k=20&m=1320563034&s=170667a&w=0&h=j6E6BDHF4QO05zN4YDYUqIzE27m-8-lAzBUZ0-F6twU=');
+  background-size: 120vw 170vh;
+  background-position: center;
+  /* background-repeat: no-repeat;  */
+   position: -webkit-sticky;
+  position: sticky;
+}
+body {
+  margin: 0;
+  /* background-image: url('https://media.istockphoto.com/vectors/sheet-of-school-ring-binder-paper-vector-id1320563034?b=1&k=20&m=1320563034&s=170667a&w=0&h=j6E6BDHF4QO05zN4YDYUqIzE27m-8-lAzBUZ0-F6twU=');
+  background-size: 120vw 170vh;
+  background-position: center;
+  background-repeat: no-repeat; */
 }
 

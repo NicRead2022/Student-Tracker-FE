@@ -38,20 +38,29 @@ const OneStudent = ({ setViewStudents }) => {
   }, [])
 
   return (
-    <div>
-      <h1>{studentInfo.name}</h1>
-      <h3>{studentInfo.email}</h3>
-      <h3>GPA: {studentInfo.gpa}</h3>
+    <div className="bigdiv">
+      <div className="student-info">
+        <div>{studentInfo.name}</div>
+        <div>{studentInfo.email}</div>
+        <div>{studentInfo.gpa}</div>
+      </div>
       <div>
+        <div className="grades">
+          <div>class name</div>
+          <div>letter</div>
+          <div>Score</div>
+        </div>
         {studentClasses.map((element) => (
-          <div>
+          <div className="grades">
             <h4>{element.name}</h4>
             <h4>{element.Grades[0].letter}</h4>
             <h4>{element.Grades[0].score}</h4>
           </div>
         ))}
       </div>
-      <button onClick={deleteStudent}>delete student</button>
+      <button className="delete-student" onClick={deleteStudent}>
+        delete student
+      </button>
     </div>
   )
 }

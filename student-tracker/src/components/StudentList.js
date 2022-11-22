@@ -2,6 +2,7 @@ import StudentCard from './StudentCard'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { useState, useEffect } from 'react'
+import '../CSS/Home.css'
 
 const StudentList = ({ getOneStudent, getAllStudents, students }) => {
   const initialState = {
@@ -38,8 +39,10 @@ const StudentList = ({ getOneStudent, getAllStudents, students }) => {
   }, [])
 
   return (
-    <div>
-      <button onClick={toggleForm}>Add Student</button>
+    <div className="body">
+      <button className="add-student" onClick={toggleForm}>
+        Add Student
+      </button>
       {viewForm ? (
         <div>
           <form onSubmit={handleSubmit}>
@@ -59,15 +62,17 @@ const StudentList = ({ getOneStudent, getAllStudents, students }) => {
           </form>
         </div>
       ) : null}
-      {students
-        .sort((a, b) => b.id - a.id)
-        .map((student) => (
-          <StudentCard
-            key={student.id}
-            name={student.name}
-            onClick={() => getOneStudent(student.id)}
-          />
-        ))}
+      <div className="students2">
+        {students
+          .sort((a, b) => b.id - a.id)
+          .map((student) => (
+            <StudentCard
+              key={student.id}
+              name={student.name}
+              onClick={() => getOneStudent(student.id)}
+            />
+          ))}
+      </div>
     </div>
   )
 }

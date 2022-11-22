@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BASE_URL } from '../globals'
+import '../CSS/OneClass.css'
 
 const OneClass = () => {
   let navigate = useNavigate()
@@ -69,6 +70,7 @@ const OneClass = () => {
   }, [])
 
   return (
+<<<<<<< HEAD
     <>
       <div>{aClass.name}</div>
       <button onClick={() => returnToAllClasses()}>Back</button>
@@ -119,6 +121,28 @@ const OneClass = () => {
         Delete Class
       </button>
     </>
+=======
+    <div className="bigdiv">
+      <div className="class-name">{aClass.name}</div>
+      <div className="students">
+        {students.map((student) => (
+          <div className="one-student">
+            <div>
+              <div>Name: {student.name}</div>
+              <div>Email: {student.email}</div>
+            </div>
+            <div className="grades">
+              <div>Letter Grade: {student.Grades[0].letter}</div>
+              <div>Score Grade: {student.Grades[0].score}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button onClick={() => deleteClass()} className="delete-class-btn">
+        Delete Class
+      </button>
+    </div>
+>>>>>>> 63a4e467ea1f27a45b3307cfcea2947e08dc1808
   )
 }
 

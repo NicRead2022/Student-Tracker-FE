@@ -1,4 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
+/* body{
+  background-image: url('https://media.istockphoto.com/vectors/sheet-of-school-ring-binder-paper-vector-id1320563034?b=1&k=20&m=1320563034&s=170667a&w=0&h=j6E6BDHF4QO05zN4YDYUqIzE27m-8-lAzBUZ0-F6twU=');
+  /* background-size: 120vw 170vh; */
+  /* background-position: center; */
+  /* background-repeat:repeat-y; */
+  /* position: -webkit-sticky;
+  position: sticky; */
+/* }  */
 .course-img {
   height: 200px;
   width: 250px;
+}
+.student-div {
+  border: 2px solid black;
+  width: 350px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+.nav-btn {
+  height: 200px;
+  background-color: rgb(222, 225, 167);
+}
+.title {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-family: 'Cabin Sketch', cursive;
+  background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.buttons{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(199, 206, 78);
+}
+
+.student-button {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 18px;
+  height: 35px;
+  width: 90px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid white;
+  border-radius: 25px;
+  margin-right: 8px;
+}
+
+.class-button {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 18px;
+  height: 35px;
+  width: 90px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid white;
+  border-radius: 25px;
+  margin-left: 8px;
+}
+
+.classes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.classes-students {
+  margin-top: 60px;
+}
+
+.addclass {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 18px;
+  height: 35px;
+  width: 110px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid black;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.add-student {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 17px;
+  height: 35px;
+  width: 110px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid black;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.students2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  margin: 20px;
+justify-content: center;
+align-items: center;
+}
+
+.body {
+  display:flex;
+  justify-content: center;
+align-items: center;
+}
+
+.delete-student {
+  background-image: linear-gradient(to left, violet, green, blue, yellow, orange, red);
+  font-size: 17px;
+  height: 35px;
+  width: 130px;
+  color: white;
+  text-shadow: 0 0 4px black;
+  border: 2px solid black;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  margin: 20px;
+
+}
+
+.grades {
+  display: flex;
+  justify-content: space-around;
+  width: 600px;
+}
+
+.bigdiv {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+}
+.bigdiv2 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
 }
