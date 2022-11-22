@@ -9,11 +9,8 @@ const OneStudent = ({ setViewStudents }) => {
 
   const [studentInfo, setStudentInfo] = useState({})
   const [studentClasses, setStudentClasses] = useState([])
-  const [gpa, setGpa] = useState(null)
-  const [toggleGpa, setToggleGpa] = useState(false)
 
   const getStudentInfo = async () => {
-    await updateGpa()
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     setStudentInfo(res.data)
     setStudentClasses(res.data.classes)
@@ -24,8 +21,7 @@ const OneStudent = ({ setViewStudents }) => {
     setViewStudents(true)
     navigate('/')
   }
-
-  const calculateGpa = async () => {
+  const updateGpa = async () => {
     let res = await axios.get(`${BASE_URL}/student/${id}`)
     let allgrades = 0
     for (let i = 0; i < res.data.classes.length; i++) {
@@ -33,29 +29,12 @@ const OneStudent = ({ setViewStudents }) => {
     }
     let GPA = allgrades / res.data.classes.length
     let roundedGPA = GPA.toFixed(2)
-    setGpa(roundedGPA)
-  }
-
-  const updateGpa = async () => {
-    await calculateGpa()
-    // let res = await axios.get(`${BASE_URL}/student/${id}`)
-    // let allgrades = 0
-    // for (let i = 0; i < res.data.classes.length; i++) {
-    //   allgrades += res.data.classes[i].Grades[0].score
-    // }
-    // let GPA = allgrades / res.data.classes.length
-    // let roundedGPA = GPA.toFixed(2)
-    // setGpa(roundedGPA)
-    await axios.put(`${BASE_URL}/student/${id}`, { gpa: gpa })
-    setToggleGpa(true)
+    await axios.put(`${BASE_URL}/student/${id}`, { gpa: roundedGPA })
+    await getStudentInfo()
   }
 
   useEffect(() => {
-    // updateGpa()
-
-    getStudentInfo()
-
-    // calculateGpa()
+    updateGpa()
   }, [])
 
   return (
@@ -63,7 +42,7 @@ const OneStudent = ({ setViewStudents }) => {
       <div className="student-info">
         <div>{studentInfo.name}</div>
         <div>{studentInfo.email}</div>
-        <div>{studentInfo.gpa}</div>
+        <div>GPA: {studentInfo.gpa}</div>
       </div>
       <div>
         <div className="grades">
