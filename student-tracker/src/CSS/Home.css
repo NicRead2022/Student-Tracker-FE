@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
+
 .course-img {
   height: 200px;
   width: 250px;
+}
+.nav-btn {
+  height: 200px;
+  background-color: rgb(222, 225, 167);
+}
+.title {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Cabin Sketch', cursive;
+}
+.buttons{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(199, 206, 78);
 }

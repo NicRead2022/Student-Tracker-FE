@@ -9,14 +9,14 @@ const Nav = ({ setViewClasses, setViewStudents }) => {
   }
 
   return (
-    <div>
-      <h1>Student Tracker</h1>
-      <button onClick={() => toggleViewStudents()} className="student-button">
+    <div className="nav-btn">
+      <div className="title"><h1>Student Tracker</h1></div>
+      <div className="buttons"><button onClick={() => toggleViewStudents()} className="student-button">
         Students
       </button>
       <button onClick={toggleViewClasses} className="class-button">
         Classes
-      </button>
+      </button></div>
     </div>
   )
 }
